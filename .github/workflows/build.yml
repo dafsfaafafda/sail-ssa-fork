@@ -1,3 +1,4 @@
+
 name: Build matrix
 
 on: [push, workflow_dispatch]
@@ -57,3 +58,10 @@ jobs:
       run: |
         eval $(opam env)
         etc/ci_core_tests.sh
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifacts
+        path: |
+          _build
